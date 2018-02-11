@@ -14,7 +14,7 @@ const app = express();
 const child = fork(childUrl);
 
 app.set('child', child);
-app.set(bodyParser.json());
+app.use(bodyParser.json());
 app.use('/api/v1/', router);
 
 app.listen(port);
