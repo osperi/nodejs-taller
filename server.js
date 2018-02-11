@@ -5,9 +5,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./router.js');
 
-//require('dotenv').config();
+require('dotenv').config();
 
-const port = 8181;
+const port = process.env.PORT || 8181;
 const childUrl = 'process.js';
 
 const app = express();

@@ -3,24 +3,27 @@
 const Twitter = require('twitter');
 const { saveTweet } = require('./model.js');
 
-//require('dotenv').config();
+require('dotenv').config();
 
 const client = new Twitter({
-  consumer_key: "",
-  consumer_secret: "",
-  access_token_key: "",
-  access_token_secret: ""
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
 let stream = undefined;
 let status = 'STOP';
 
 function onTweet(data) {
-  // console.log(data.text);
-  // setTimeout(() => stream.once('data', onTweet), 1000);
-  saveTweet(data).then(() => {
+  if (process.env.OUTPUT_TYPE == "mongodb") {
+    saveTweet(data).then(() => {
+      setTimeout(() => stream.once('data', onTweet), 1000);
+    });
+  } else {
+    console.log(data.text);
     setTimeout(() => stream.once('data', onTweet), 1000);
-  });
+  }
 }
 
 process.on('message', (msg) => {
@@ -34,12 +37,9 @@ process.on('message', (msg) => {
     stream = undefined;
     status = msg.cmd;
   }
-}); <<
-<< << < HEAD
+});
 
 process.on('uncaughtException', function(err) {
   console.error(err.stack);
   console.log("Node NOT Exiting...");
-}); ===
-=== = >>>
->>> > 27 a84b061dfcabb4bb5e628a2f45335004c0456b
+});

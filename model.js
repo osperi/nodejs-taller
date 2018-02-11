@@ -2,7 +2,9 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://127.0.0.1:27017/taller_node_db");
+require('dotenv').config();
+
+mongoose.connect("mongodb://" + process.env.MONGODB_URL);
 mongoose.Promise = global.Promise;
 
 const TweetSchema = mongoose.Schema({
