@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getTweets, getTweet, getTweetsByFilter } = require('./model.js');
+const { getTweet, getTweets, getTweetsByFilter } = require('./model.js');
 
 router.get('/', (req, res) => {
   let data = {
