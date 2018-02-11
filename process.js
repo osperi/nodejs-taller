@@ -6,10 +6,10 @@ const { saveTweet } = require('./model.js');
 //require('dotenv').config();
 
 const client = new Twitter({
-  consumer_key: "W2IScdVN7wSaeCZhWBCop60Bi",
-  consumer_secret: "qEpOp3CgPZQK8ejjmoj8fBjnURSKifGIlExOhaxBFHioLjRf34",
-  access_token_key: "19240639-e3bDa3ilJ8DQzcl59LbMFaFHIiWUpnUXYLuAsrPep",
-  access_token_secret: "xUozRwv1QWsksalQTgdwFFT8K8BLbb0cxyzlfC7RK1mTv"
+  consumer_key: "",
+  consumer_secret: "",
+  access_token_key: "",
+  access_token_secret: ""
 });
 
 let stream = undefined;
@@ -34,9 +34,12 @@ process.on('message', (msg) => {
     stream = undefined;
     status = msg.cmd;
   }
-});
+}); <<
+<< << < HEAD
 
 process.on('uncaughtException', function(err) {
   console.error(err.stack);
   console.log("Node NOT Exiting...");
-});
+}); ===
+=== = >>>
+>>> > 27 a84b061dfcabb4bb5e628a2f45335004c0456b
